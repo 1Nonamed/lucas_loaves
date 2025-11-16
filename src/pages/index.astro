@@ -1,11 +1,138 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
+import Layout from "../layouts/Layout.astro";
 
 // Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
 // Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
 ---
 
 <Layout>
-	<Welcome />
+  <main>
+    <section>
+      <h1>Handcrafted Sourdough, Baked with Passion.</h1>
+      <p>Freshly baked daily with locally sourced ingredients.</p>
+      <button class="px-4 py-2.5 bg-orange-300 rounded-lg font-medium text-sm"
+        >Explore Our Loaves</button
+      >
+    </section>
+    <section class="px-4">
+      <form>
+        <label
+          for="search"
+          class="mb-2 text-sm font-medium text-gray-900 sr-only">Search</label
+        >
+        <div class="relative">
+          <div
+            class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none"
+          >
+            <svg
+              class="w-4 h-4 text-body"
+              aria-hidden="true"
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              fill="none"
+              viewBox="0 0 24 24"
+              ><path
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-width="2"
+                d="m21 21-3.5-3.5M17 10a7 7 0 1 1-14 0 7 7 0 0 1 14 0Z"
+              ></path></svg
+            >
+          </div>
+          <input
+            type="search"
+            id="search"
+            class="block w-full p-3 ps-9 bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base focus:ring-brand focus:border-brand shadow-xs placeholder:text-body"
+            placeholder="Search for your favorite loaf"
+          />
+        </div>
+      </form>
+
+      <div class="flex justify-center items-center border rounded-lg">
+        <label for="search" class="p-2"
+          ><svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 20 20"
+            fill="currentColor"
+            class="size-5"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M9 3.5a5.5 5.5 0 1 0 0 11 5.5 5.5 0 0 0 0-11ZM2 9a7 7 0 1 1 12.452 4.391l3.328 3.329a.75.75 0 1 1-1.06 1.06l-3.329-3.328A7 7 0 0 1 2 9Z"
+              clip-rule="evenodd"></path>
+          </svg>
+        </label>
+        <input
+          type="text"
+          name="search"
+          id="search"
+          class="py-2 pl-2 w-full rounded-lg"
+          placeholder="Search for your favorite loaf"
+        />
+      </div>
+      <div>
+        <h2>Our Breads</h2>
+        <div class="flex flex-wrap gap-4 overflow-x-scroll">
+          <article class="w-50 h-50">
+            <a href="#">
+              <img
+                src="/public/images/classic_sourdough.jpg"
+                alt="bread-name"
+                class="w-full h-full object-cover object-center bg-amber-300 rounded-lg"
+              />
+            </a>
+            <div>
+              <h3>Classic Sourdough</h3>
+              <small>Timeless taste</small>
+            </div>
+          </article>
+          <article>
+            <a href="#">
+              <img
+                src="/public/images/seedy_sourdough.jpg"
+                alt="bread-name"
+                class="w-50 h-50 bg-amber-300 rounded-lg"
+              />
+            </a>
+            <div>
+              <h3>Seeded Loaves</h3>
+              <small>Nutty & rich</small>
+            </div>
+          </article>
+        </div>
+      </div>
+      <div>
+        <h2>Baker's Specials</h2>
+        <div class="grid grid-cols-2 gap-4">
+          <article class="w-full">
+            <a href="#">
+              <img
+                src="/public/images/classic_sourdough.jpg"
+                alt="bread-name"
+                class="w-full max-h-40 object-cover object-center rounded-lg"
+              />
+            </a>
+            <div>
+              <h3>Classic Sourdough</h3>
+              <small>Timeless taste</small>
+            </div>
+          </article>
+          <article>
+            <a href="#">
+              <img
+                src="/public/images/classic_sourdough.jpg"
+                alt="bread-name"
+                class="w-full max-h-40 object-cover object-center rounded-lg"
+              />
+            </a>
+            <div>
+              <h3>Seeded Loaves</h3>
+              <small>Nutty & rich</small>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
 </Layout>
