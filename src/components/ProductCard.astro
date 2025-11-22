@@ -1,0 +1,18 @@
+---
+const { src, productName, price, description, href } = Astro.props;
+---
+
+<article class="flex flex-col gap-2">
+  <img
+    class="w-full h-40 md:h-48 lg:h-56 object-cover rounded-lg"
+    src={src}
+    alt={productName}
+  />
+  <footer>
+    <h4 class="text-sm text-earthy-brown font-bold">{productName}</h4>
+    <div class="text-gray-500 flex flex-col">
+      <p class="text-sm">{description}</p>
+      <small class="text-black font-medium">${price}</small>
+    </div>
+  </footer>
+</article>
