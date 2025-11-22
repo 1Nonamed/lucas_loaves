@@ -1,0 +1,48 @@
+---
+import SearchForm from "../components/SearchForm.astro";
+import Button from "../components/Button.astro";
+import Layout from "../layouts/Layout.astro";
+import JobOpeningCard from "../components/JobOpeningCard.astro";
+---
+
+<Layout>
+  <main>
+    <section
+      class="h-[50vh] px-4 flex flex-col items-center justify-center gap-4 bg-[url('../images/careers.jpg')] bg-cover bg-center text-white text-center bg-black/50 bg-blend-overlay"
+    >
+      <h1 class="text-4xl font-bold">Work With Us</h1>
+      <p>
+        Join our passionate team dedicated to baking the finest artisan
+        sourdough. We're always looking for great people to help us grow.
+      </p>
+      <Button href="#openings" align="self-center">See Openings</Button>
+    </section>
+    <section
+      id="openings"
+      class="flex flex-col gap-4 pt-6 pb-28 px-4 bg-warm-beige"
+    >
+      <h2 class="text-earthy-brown font-bold">Current Openings</h2>
+      <SearchForm />
+      <JobOpeningCard
+        title="Head Sourdough Baker"
+        location="Sydney, NSW"
+        type="Full-Time"
+        description="Lead our morning bake, perfecting our signature sourdough loaves and training new team members."
+      />
+      <JobOpeningCard
+        title="Assistant Baker"
+        location="Melbourne, VIC"
+        type="Part-Time"
+        description="Support our head baker in daily operations, ensuring quality and consistency in every loaf."
+        applyLink="/"
+      />
+      <JobOpeningCard
+        title="Customer Service Representative"
+        location="Brisbane, QLD"
+        type="Full-Time"
+        description="Be the friendly face of our bakery, assisting customers with their orders and inquiries."
+        applyLink="/"
+      />
+    </section>
+  </main>
+</Layout>

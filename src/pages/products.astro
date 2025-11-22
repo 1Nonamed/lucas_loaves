@@ -1,9 +1,31 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Header from "../components/Header.astro";
+import MobileMenu from "../components/MobileMenu.astro";
+import SearchForm from "../components/SearchForm.astro";
+import ProductCard from "../components/ProductCard.astro";
 ---
 
 <Layout>
   <Header />
-  <main>hi from products</main>
+  <MobileMenu title="Our Loaves" />
+  <main>
+    <section class="pb-6 px-4">
+      <SearchForm />
+      <div class="grid grid-cols-2 md:grid-cols-3 gap-4 py-4">
+        <ProductCard
+          src="src/images/rye_sourdough.jpg"
+          productName="Rye Sourdough"
+          price="8.50"
+          description="Lorem ipsum dolor."
+        />
+      </div>
+    </section>
+  </main>
 </Layout>
+
+<style>
+  body {
+    background-color: #f0f0ea;
+  }
+</style>
