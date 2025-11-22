@@ -1,1 +1,28 @@
 @import "tailwindcss";
+
+@theme {
+  --color-earthy-brown: #6b4f4b;
+  --color-warm-beige: #fff8e7;
+  --color-warm-gold: #d4a056;
+}
+
+@layer utilities {
+  /* Chrome, Safari and Opera */
+  .scrollbar-hidden::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Firefox */
+  .scrollbar-hidden {
+    scrollbar-width: none;
+  }
+
+  /* IE and Edge */
+  .scrollbar-hidden {
+    -ms-overflow-style: none;
+  }
+}
+
+body {
+  font-family: "Onest Variable", sans-serif;
+}
