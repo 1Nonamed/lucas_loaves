@@ -1,5 +1,4 @@
 ---
-import { Image } from "astro:assets";
 import Layout from "../layouts/Layout.astro";
 import SearchForm from "../components/SearchForm.astro";
 import ProductCard from "../components/ProductCard.astro";
@@ -9,81 +8,65 @@ import Button from "../components/Button.astro";
 <Layout>
   <main>
     <section
-      class="flex flex-col items-center justify-center relative text-white h-[50vh] overflow-hidden text-center gap-2 bg-[url('../images/main-bg.jpg')] bg-cover bg-bottom sm:bg-center bg-black/40 bg-blend-overlay"
+      class="flex flex-col items-center justify-center relative text-gray-100 h-[75vh] md:h-[60vh] overflow-hidden text-center px-4 gap-2 md:gap-8 bg-[url('../images/main-bg.jpg')] bg-cover bg-bottom sm:bg-center bg-black/40 bg-blend-overlay"
     >
-      <h1 class="text-4xl font-bold">
+      <h1
+        class="text-4xl md:text-6xl font-bold max-w-4xl leading-tight hover:text-warm-gold transition ease-in-out"
+      >
         Handcrafted Sourdough, Baked with Passion.
       </h1>
-      <p class="text-sm sm:text-2xl text-wrap">
+      <p class="text-sm py-4 sm:text-2xl">
         Freshly baked daily with locally sourced ingredients.
       </p>
       <Button href="/products" align="self-center">Explore Our Loaves</Button>
     </section>
-    <section class="py-6 px-4">
+    <!-- Featured Products -->
+    <section class="py-6 px-4 md:max-w-6xl md:mx-auto">
       <SearchForm />
       <div class="flex flex-col gap-4 py-4">
-        <h2 class="text-xl font-bold text-earthy-brown">Our Breads</h2>
+        <h2 class="text-xl md:text-3xl font-bold text-earthy-brown">
+          Our Breads
+        </h2>
+        <p class="text-base md:text-lg">
+          Choose from our selection of fresh, handcrafted sourdough loaves.
+        </p>
         <div class="flex gap-4 overflow-auto scrollbar-hidden h-auto">
-          <article class="shrink-0 flex flex-col gap-2">
-            <a href="#">
-              <img
-                src="src/images/classic_sourdough.jpg"
-                alt="Classic Sourdough"
-                class="w-50 lg:w-56 h-50 lg:h-56 object-cover rounded-lg"
-              />
-            </a>
-            <footer>
-              <h3 class="text-earthy-brown font-bold">Classic Sourdough</h3>
-              <small class="text-sm text-gray-500">Timeless taste</small>
-            </footer>
-          </article>
-          <article class="shrink-0 flex flex-col gap-2">
-            <a href="#">
-              <img
-                src="src/images/seedy_sourdough.jpg"
-                alt="Seeded Loaves"
-                class="w-50 lg:w-56 h-50 lg:h-56 object-cover rounded-lg"
-              />
-            </a>
-            <footer>
-              <h3 class="text-earthy-brown font-bold">Seeded Loaves</h3>
-              <small class="text-sm text-gray-500">Nutty & rich</small>
-            </footer>
-          </article>
-          <article class="shrink-0 flex flex-col gap-2">
-            <a href="#">
-              <img
-                src="src/images/mixed_grain_sourdough.jpg"
-                alt="Mixed Grain Sourdough"
-                class="w-50 lg:w-56 h-50 lg:h-56 object-cover rounded-lg"
-              />
-            </a>
-            <footer>
-              <h3 class="text-earthy-brown font-bold">Mixed Grain</h3>
-              <small class="text-sm text-gray-500">Hearty & wholesome</small>
-            </footer>
-          </article>
-          <article class="shrink-0 flex flex-col gap-2">
-            <a href="#">
-              <img
-                src="src/images/rye_sourdough.jpg"
-                alt="Rye Sourdough"
-                class="w-50 lg:w-56 h-50 lg:h-56 object-cover rounded-lg"
-              />
-            </a>
-            <footer>
-              <h3 class="text-earthy-brown font-bold">Rye</h3>
-              <small class="text-sm text-gray-500">Distinctively bold</small>
-            </footer>
-          </article>
+          <ProductCard
+            src="src/images/classic_sourdough.jpg"
+            productName="Classic Sourdough"
+            description="Timeless taste"
+            href="#"
+            size="large"
+          />
+          <ProductCard
+            src="src/images/seedy_sourdough.jpg"
+            productName="Seeded Loaves"
+            description="Nutty & rich"
+            href="#"
+            size="large"
+          />
+          <ProductCard
+            src="src/images/mixed_grain_sourdough.jpg"
+            productName="Mixed Grain"
+            description="Hearty & wholesome"
+            href="#"
+            size="large"
+          />
+          <ProductCard
+            src="src/images/rye_sourdough.jpg"
+            productName="Rye"
+            description="Distinctively bold"
+            href="#"
+            size="large"
+          />
         </div>
       </div>
     </section>
-    <section class="py-6 px-4">
-      <h2 class="col-span-2 text-xl font-bold text-earthy-brown">
+    <section class="py-6 px-4 md:max-w-6xl md:mx-auto">
+      <h2 class="col-span-2 text-xl md:text-3xl font-bold text-earthy-brown">
         Baker's Specials
       </h2>
-      <div class="grid grid-cols-2 md:grid-cols-3 gap-4 py-4">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 py-4">
         <ProductCard
           src="src/images/rye_sourdough.jpg"
           productName="Rye Sourdough"
@@ -116,20 +99,29 @@ import Button from "../components/Button.astro";
         />
       </div>
     </section>
-    <section class="px-4 pt-6 pb-28">
-      <article class="bg-warm-beige p-6 rounded-lg shadow-sm max-w-3xl mx-auto">
-        <div class="h-20 w-20 rounded-full mx-auto overflow-hidden mb-4">
+    <section class="py-6 px-4">
+      <article
+        class="bg-warm-beige p-6 rounded-lg shadow-sm max-w-3xl mx-auto flex flex-col gap-4 mb-4"
+      >
+        <div
+          class="h-20 w-20 md:h-32 md:w-32 lg:h-40 lg:w-40 rounded-full mx-auto overflow-hidden my-4"
+        >
           <img src="src/images/lucas_profile.jpg" alt="Luca" />
         </div>
-        <h2 class="text-xl font-bold text-earthy-brown text-center py-2">
+        <h2
+          class="text-xl md:text-2xl lg:text-3xl font-bold text-earthy-brown text-center py-2"
+        >
           About Luca
         </h2>
-        <p class="text-center text-gray-500 text-balance max-w-2xl mx-auto">
+        <p
+          class="text-center text-gray-500 text-balance max-w-2xl md:text-lg lg:text-xl mx-auto mb-4 leading-relaxed"
+        >
           "For me, baking is more than just a process; it's a passion. I started
           Luca's Loaves to share the joy of truly authentic sourdough, made
           slowly and with the finest local ingredients. Every loaf tells a story
           of tradition, patience, and love."
         </p>
+        <Button href="/classes" align="self-center">Check our Classes!</Button>
       </article>
     </section>
   </main>

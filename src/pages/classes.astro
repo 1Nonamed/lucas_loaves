@@ -1,13 +1,66 @@
 ---
+import Button from "../components/Button.astro";
 import Layout from "../layouts/Layout.astro";
 ---
 
 <Layout>
-  <img src="src/images/main-bg.jpg" alt="classroom setting with bread baking" />
-  <h2>Artisan Sourdough Classes</h2>
-  <p>
-    Discover the joy of baking your own delicious sourdough. In our hands-on
-    classes, Luca will guide you through the entire process, from nurturing a
-    starter to pulling a perfect, crusty loaf from the oven.
-  </p>
+  <main class="pt-16 flex flex-col grow">
+    <section
+      class="h-[75vh] md:h-[60vh] px-4 flex flex-col items-center justify-center gap-4 bg-[url('../images/main-bg.jpg')] bg-cover bg-center text-white text-center bg-black/50 bg-blend-overlay"
+    >
+      <h1
+        class="text-4xl md:text-6xl font-bold max-w-4xl md:max-w-2xl leading-tight hover:text-warm-gold transition ease-in-out"
+      >
+        Artisan Sourdough Classes
+      </h1>
+      <p class="py-4 text-sm md:text-lg lg:text-xl">
+        Learn the art of sourdough baking from a master baker.
+      </p>
+      <Button href="#classes" align="self-center">See Classes</Button>
+    </section>
+    <section class="px-4 py-6 md:pt-14 md:max-w-6xl md:mx-auto" id="classes">
+      <h2 class="text-xl md:text-3xl font-bold text-earthy-brown py-4 pt-12">
+        Artisan Sourdough Classes
+      </h2>
+      <p class="text-base md:text-lg lg:text-xl">
+        Discover the joy of baking your own delicious sourdough. In our hands-on
+        classes, <span class="font-bold text-warm-gold"
+          >Luca will guide you through the entire process</span
+        >, from nurturing a starter to pulling a perfect, crusty loaf from the
+        oven.
+      </p>
+    </section>
+    <section
+      class="px-4 py-6 flex flex-col gap-4 md:gap-8 md:max-w-6xl md:mx-auto"
+    >
+      <div class="flex flex-col md:flex-row gap-6 justify-center">
+        <article
+          class="flex flex-col gap-2 border border-warm-gold bg-warm-beige py-6 px-4 rounded-lg"
+        >
+          <h3 class="text-lg font-bold text-earthy-brown md:text-xl">
+            What You'll Learn
+          </h3>
+          <ul class="list-disc list-inside flex flex-col gap-2">
+            <li>❓ How to care for a sourdough starter.</li>
+            <li>🍞 Basic bread-making techniques.</li>
+            <li>🥐 Creating a sourdough loaf.</li>
+            <li>🥖 Finishing and proofing techniques.</li>
+          </ul>
+        </article>
+        <article
+          class="flex flex-col gap-2 border border-warm-gold bg-warm-beige py-6 px-4 rounded-lg"
+        >
+          <h3 class="text-lg font-bold text-earthy-brown md:text-xl">
+            What You'll Need
+          </h3>
+          <ul class="list-disc list-inside flex flex-col gap-4">
+            <li>🥖 A sourdough starter.</li>
+            <li>🥄 Basic kitchen tools.</li>
+            <li>🧑‍🍳 Ingredients for a sourdough loaf.</li>
+          </ul>
+        </article>
+      </div>
+      <Button href="#classes" align="self-center">Book a Class</Button>
+    </section>
+  </main>
 </Layout>

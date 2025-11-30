@@ -1,16 +1,15 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Header from "../components/Header.astro";
-import MobileMenu from "../components/MobileMenu.astro";
+
 import SearchForm from "../components/SearchForm.astro";
 import ProductCard from "../components/ProductCard.astro";
 ---
 
 <Layout>
   <Header />
-  <MobileMenu title="Our Loaves" />
-  <main>
-    <section class="pb-6 px-4">
+  <main class="pt-16 flex flex-col grow">
+    <section class="py-6 px-4">
       <SearchForm />
       <div class="grid grid-cols-2 md:grid-cols-3 gap-4 py-4">
         <ProductCard

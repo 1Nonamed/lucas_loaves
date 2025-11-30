@@ -6,12 +6,16 @@ import JobOpeningCard from "../components/JobOpeningCard.astro";
 ---
 
 <Layout>
-  <main>
+  <main class="bg-warm-beige py-6">
     <section
-      class="h-[50vh] px-4 flex flex-col items-center justify-center gap-4 bg-[url('../images/careers.jpg')] bg-cover bg-center text-white text-center bg-black/50 bg-blend-overlay"
+      class="h-[75vh] md:h-[60vh] px-4 flex flex-col items-center justify-center gap-4 bg-[url('../images/careers.jpg')] bg-cover bg-center text-white text-center bg-black/50 bg-blend-overlay"
     >
-      <h1 class="text-4xl font-bold">Work With Us</h1>
-      <p>
+      <h1
+        class="text-4xl md:text-6xl font-bold max-w-4xl leading-tight hover:text-warm-gold transition ease-in-out"
+      >
+        Work With Us
+      </h1>
+      <p class="text-sm py-4 sm:text-2xl">
         Join our passionate team dedicated to baking the finest artisan
         sourdough. We're always looking for great people to help us grow.
       </p>
@@ -19,30 +23,34 @@ import JobOpeningCard from "../components/JobOpeningCard.astro";
     </section>
     <section
       id="openings"
-      class="flex flex-col gap-4 pt-6 pb-28 px-4 bg-warm-beige"
+      class="py-6 px-4 md:max-w-6xl md:mx-auto flex flex-col gap-4"
     >
-      <h2 class="text-earthy-brown font-bold">Current Openings</h2>
+      <h2 class="text-xl md:text-3xl font-bold text-earthy-brown py-4">
+        Current Openings
+      </h2>
       <SearchForm />
-      <JobOpeningCard
-        title="Head Sourdough Baker"
-        location="Sydney, NSW"
-        type="Full-Time"
-        description="Lead our morning bake, perfecting our signature sourdough loaves and training new team members."
-      />
-      <JobOpeningCard
-        title="Assistant Baker"
-        location="Melbourne, VIC"
-        type="Part-Time"
-        description="Support our head baker in daily operations, ensuring quality and consistency in every loaf."
-        applyLink="/"
-      />
-      <JobOpeningCard
-        title="Customer Service Representative"
-        location="Brisbane, QLD"
-        type="Full-Time"
-        description="Be the friendly face of our bakery, assisting customers with their orders and inquiries."
-        applyLink="/"
-      />
+      <div class="flex flex-col md:flex-row gap-4">
+        <JobOpeningCard
+          title="Head Sourdough Baker"
+          location="Sydney, NSW"
+          type="Full-Time"
+          description="Lead our morning bake, perfecting our signature sourdough loaves and training new team members."
+        />
+        <JobOpeningCard
+          title="Assistant Baker"
+          location="Melbourne, VIC"
+          type="Part-Time"
+          description="Support our head baker in daily operations, ensuring quality and consistency in every loaf."
+          applyLink="/"
+        />
+        <JobOpeningCard
+          title="Customer Service Representative"
+          location="Brisbane, QLD"
+          type="Full-Time"
+          description="Be the friendly face of our bakery, assisting customers with their orders and inquiries."
+          applyLink="/"
+        />
+      </div>
     </section>
   </main>
 </Layout>
