@@ -4,11 +4,13 @@ const { title, location, type, description, applyLink } = Astro.props;
 ---
 
 <article
-  class="flex flex-col gap-2 p-4 bg-gray-100 rounded-lg text-sm shadow-md border border-warm-gold/30"
+  class="flex flex-col justify-between gap-2 p-4 bg-gray-100 rounded-lg text-sm shadow-md border border-warm-gold/30"
 >
-  <small class="text-gray-600">{type} • {location}</small>
-  <h3 class="font-bold text-earthy-brown">{title}</h3>
-  <p class="text-gray-500 pb-4">
+  <small class="text-gray-600 md:text-base lg:text-lg"
+    >{type} • {location}</small
+  >
+  <h3 class="font-bold text-earthy-brown md:text-lg lg:text-xl">{title}</h3>
+  <p class="text-gray-500 pb-4 md:text-base lg:text-lg">
     {description}
   </p>
 
