@@ -13,7 +13,7 @@ export default function CartFlyout() {
   if (!$isCartOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-50 overflow-hidden font-sans">
+    <aside className="fixed inset-0 z-50 overflow-hidden font-sans">
       <div
         className="absolute inset-0 bg-black/50 backdrop-blur-sm transition-opacity"
         onClick={() => isCartOpen.set(false)}
@@ -44,7 +44,8 @@ export default function CartFlyout() {
         </div>
 
         {/* Items */}
-        <div className="flex-1 overflow-y-auto p-6 space-y-6">
+        {/* Cart is empty */}
+        <section className="flex-1 overflow-y-auto p-6 space-y-6">
           {$cartItems.length === 0 ? (
             <div className="flex flex-col items-center justify-center h-full text-stone-500 space-y-4">
               <svg
@@ -70,8 +71,9 @@ export default function CartFlyout() {
               </button>
             </div>
           ) : (
+            // Displaying cart items
             $cartItems.map((item) => (
-              <div key={item.id} className="flex gap-4">
+              <article key={item.id} className="flex gap-4">
                 <div className="w-24 h-24 rounded-lg overflow-hidden shrink-0 border border-stone-100">
                   <img
                     src={item.image}
@@ -100,10 +102,10 @@ export default function CartFlyout() {
                     </button>
                   </div>
                 </div>
-              </div>
+              </article>
             ))
           )}
-        </div>
+        </section>
 
         {/* Footer */}
         {$cartItems.length > 0 && (
@@ -125,6 +127,6 @@ export default function CartFlyout() {
           </div>
         )}
       </div>
-    </div>
+    </aside>
   );
 }

@@ -1,5 +1,5 @@
-import { persistentAtom } from '@nanostores/persistent';
-import { atom } from 'nanostores';
+import { persistentAtom } from "@nanostores/persistent";
+import { atom } from "nanostores";
 
 export type CartItem = {
   id: string;
@@ -12,7 +12,7 @@ export type CartItem = {
 
 export const isCartOpen = atom(false);
 
-export const cartItems = persistentAtom<CartItem[]>('cart', [], {
+export const cartItems = persistentAtom<CartItem[]>("cart", [], {
   encode: JSON.stringify,
   decode: JSON.parse,
 });
@@ -34,4 +34,17 @@ export function addCartItem(item: CartItem) {
 export function removeCartItem(id: string) {
   const currentItems = cartItems.get();
   cartItems.set(currentItems.filter((i) => i.id !== id));
+}
+
+export function updateCartItemQuantity(id: string, quantity: number) {
+  const currentItems = cartItems.get();
+  if (quantity <= 0) {
+    removeCartItem(id);
+    return;
+  }
+
+  const updatedItems = currentItems.map((item) =>
+    item.id === id ? { ...item, quantity } : item
+  );
+  cartItems.set(updatedItems);
 }

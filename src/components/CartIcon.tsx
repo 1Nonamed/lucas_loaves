@@ -8,7 +8,7 @@ export default function CartIcon() {
   return (
     <button
       onClick={() => isCartOpen.set(true)}
-      className="relative p-2 text-stone-600 hover:text-earthy-brown transition-colors"
+      className="relative p-2 text-stone-600 hover:text-earthy-brown transition-colors cursor-pointer"
       aria-label="Open cart"
     >
       <svg
