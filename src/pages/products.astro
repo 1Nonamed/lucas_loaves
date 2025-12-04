@@ -1,9 +1,11 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Header from "../components/Header.astro";
+import Header from "../components/shared/Header.astro";
 
 import SearchForm from "../components/SearchForm.astro";
 import ProductCard from "../components/ProductCard.astro";
+import { products } from "../actions/products";
+const allProducts = await products();
 ---
 
 <Layout>
@@ -12,12 +14,17 @@ import ProductCard from "../components/ProductCard.astro";
     <section class="py-6 px-4">
       <SearchForm />
       <div class="grid grid-cols-2 md:grid-cols-3 gap-4 py-4">
-        <ProductCard
-          src="src/images/rye_sourdough.jpg"
-          productName="Rye Sourdough"
-          price="8.50"
-          description="Lorem ipsum dolor."
-        />
+        {
+          allProducts?.map((product) => (
+            <ProductCard
+              src={product.image}
+              productName={product.name}
+              price={product.price}
+              description={product.description.summary}
+              href={`/products/${product.slug}`}
+            />
+          ))
+        }
       </div>
     </section>
   </main>

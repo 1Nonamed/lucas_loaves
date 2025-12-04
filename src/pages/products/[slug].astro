@@ -1,0 +1,77 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import AddToCart from "../../components/AddToCart.tsx";
+import ImageGallery from "../../components/ImageGallery.tsx";
+import { getProductBySlug } from "../../actions/products.ts";
+
+const { slug } = Astro.params;
+
+const product = await getProductBySlug(slug!);
+
+if (!product) {
+  return Astro.redirect("/404");
+}
+
+const { id, name, description, image, images, price } = product;
+---
+
+<Layout title={`${name} | Luca's Loaves`}>
+  <main class="pt-24 pb-12 px-4 max-w-6xl mx-auto grow">
+    <div class="grid md:grid-cols-2 gap-8 md:gap-12">
+      <!-- Image Gallery -->
+      <ImageGallery
+        client:load
+        images={images}
+        productName={name}
+        slug={slug!}
+      />
+
+      <div class="flex flex-col gap-6">
+        <div>
+          <h1 class="text-4xl md:text-5xl font-bold text-earthy-brown mb-2">
+            {name}
+          </h1>
+          <p class="text-2xl font-medium text-stone-600">${price}</p>
+        </div>
+
+        <div class="prose prose-stone max-w-none">
+          <p class="text-lg leading-relaxed text-gray-700">
+            {description.details}
+          </p>
+        </div>
+
+        {
+          description.ingredients && (
+            <div class="bg-warm-beige/30 p-6 rounded-xl border border-stone-100">
+              <h3 class="font-bold text-earthy-brown mb-3 text-lg">
+                Ingredients
+              </h3>
+              <ul class="grid grid-cols-2 gap-2 text-stone-600">
+                {description.ingredients.map((ingredient: string) => (
+                  <li class="flex items-center gap-2">
+                    <span class="w-1.5 h-1.5 rounded-full bg-warm-gold" />
+                    {ingredient}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )
+        }
+
+        <div class="mt-auto pt-6 border-t border-stone-200">
+          <AddToCart
+            client:load
+            id={id}
+            name={name}
+            price={Number(price)}
+            image={image}
+            slug={slug!}
+          />
+          <p class="text-center text-sm text-stone-500 mt-4">
+            Baked fresh daily. Available for local pickup.
+          </p>
+        </div>
+      </div>
+    </div>
+  </main>
+</Layout>

@@ -2,7 +2,11 @@
 import Layout from "../layouts/Layout.astro";
 import SearchForm from "../components/SearchForm.astro";
 import ProductCard from "../components/ProductCard.astro";
-import Button from "../components/Button.astro";
+import Button from "../components/shared/Button.astro";
+
+import { products } from "../actions/products";
+
+const allProducts = await products();
 ---
 
 <Layout>
@@ -31,34 +35,17 @@ import Button from "../components/Button.astro";
           Choose from our selection of fresh, handcrafted sourdough loaves.
         </p>
         <div class="flex gap-4 overflow-auto scrollbar-hidden h-auto">
-          <ProductCard
-            src="src/images/classic_sourdough.jpg"
-            productName="Classic Sourdough"
-            description="Timeless taste"
-            href="#"
-            size="large"
-          />
-          <ProductCard
-            src="src/images/seedy_sourdough.jpg"
-            productName="Seeded Loaves"
-            description="Nutty & rich"
-            href="#"
-            size="large"
-          />
-          <ProductCard
-            src="src/images/mixed_grain_sourdough.jpg"
-            productName="Mixed Grain"
-            description="Hearty & wholesome"
-            href="#"
-            size="large"
-          />
-          <ProductCard
-            src="src/images/rye_sourdough.jpg"
-            productName="Rye"
-            description="Distinctively bold"
-            href="#"
-            size="large"
-          />
+          {
+            allProducts?.map((product) => (
+              <ProductCard
+                src={product.image}
+                productName={product.name}
+                description={product.description.summary}
+                href={`/products/${product.slug}`}
+                size="large"
+              />
+            ))
+          }
         </div>
       </div>
     </section>
@@ -67,36 +54,16 @@ import Button from "../components/Button.astro";
         Baker's Specials
       </h2>
       <div class="grid grid-cols-2 md:grid-cols-4 gap-4 py-4">
-        <ProductCard
-          src="src/images/rye_sourdough.jpg"
-          productName="Rye Sourdough"
-          price="8.50"
-          href="/products/rye_sourdough"
-        />
-        <ProductCard
-          src="src/images/olive_sourdough.jpg"
-          productName="Olive Sourdough"
-          price="7.50"
-          href="/products/olive_sourdough"
-        />
-        <ProductCard
-          src="src/images/mixed_grain_sourdough.jpg"
-          productName="Mixed Grain Sourdough"
-          price="9.50"
-          href="/products/mixed_grain_sourdough"
-        />
-        <ProductCard
-          src="src/images/white_sourdough.jpg"
-          productName="White Sourdough"
-          price="10.50"
-          href="/products/white_sourdough"
-        />
-        <ProductCard
-          src="src/images/wholemeal_sourdough.jpg"
-          productName="Wholemeal Sourdough"
-          price="11.50"
-          href="/products/wholemeal_sourdough"
-        />
+        {
+          allProducts?.map((product) => (
+            <ProductCard
+              src={product.image}
+              productName={product.name}
+              price={product.price}
+              href={`/products/${product.slug}`}
+            />
+          ))
+        }
       </div>
     </section>
     <section class="py-6 px-4">
