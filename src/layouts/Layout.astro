@@ -1,7 +1,9 @@
 ---
 import "@fontsource-variable/onest";
-import Header from "../components/Header.astro";
-import Footer from "../components/Footer.astro";
+import Header from "../components/shared/Header.astro";
+import Footer from "../components/shared/Footer.astro";
+import CartFlyout from "../components/CartFlyout.tsx";
+import { ClientRouter } from "astro:transitions";
 import "../styles/global.css";
 ---
 
@@ -12,11 +14,16 @@ import "../styles/global.css";
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
+    <meta name="description" content="Lucas' Loaves - Handcrafted Sourdough" />
+    <meta name="keywords" content="sourdough, bread, baked goods, artisanal" />
+    <meta name="author" content="Lucas' Loaves" />
     <title>Luca's Loaves</title>
+    <ClientRouter />
   </head>
   <body class="min-h-screen flex flex-col">
     <Header />
     <slot class="grow" />
     <Footer />
+    <CartFlyout client:load />
   </body>
 </html>
