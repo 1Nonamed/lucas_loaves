@@ -25,3 +25,5 @@ pnpm-debug.log*
 
 #src
 .env.d.ts
+# Local Netlify folder
+.netlify
