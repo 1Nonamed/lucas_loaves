@@ -1,6 +1,7 @@
 ---
 export const prerender = true;
 import Layout from "../layouts/Layout.astro";
+import lucasProfile from "../images/lucas_profile.jpg";
 ---
 
 <Layout>
@@ -24,7 +25,7 @@ import Layout from "../layouts/Layout.astro";
           Key Facts About Luca and the Bread!
         </h2>
         <div class="h-20 w-20 rounded-full mx-auto overflow-hidden mb-4">
-          <img src="src/images/lucas_profile.jpg" alt="Luca" />
+          <img src={lucasProfile.src} alt="Luca" />
         </div>
         <p class="py-4 mb-4">
           Luca commenced his career as a <span class="text-warm-gold font-bold"

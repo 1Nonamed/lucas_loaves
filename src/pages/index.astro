@@ -3,10 +3,11 @@ import Layout from "../layouts/Layout.astro";
 import SearchForm from "../components/SearchForm.astro";
 import ProductCard from "../components/ProductCard.astro";
 import Button from "../components/shared/Button.astro";
+import lucasProfile from "../images/lucas_profile.jpg";
 
-import { products } from "../actions/products";
+import { getHomePageProducts } from "../actions/products";
 
-const allProducts = await products();
+const { marqueeBreads, bakersSpecials } = await getHomePageProducts();
 ---
 
 <Layout>
@@ -34,18 +35,22 @@ const allProducts = await products();
         <p class="text-base md:text-lg">
           Choose from our selection of fresh, handcrafted sourdough loaves.
         </p>
-        <div class="flex gap-4 overflow-auto scrollbar-hidden h-auto">
-          {
-            allProducts?.map((product) => (
-              <ProductCard
-                src={product.image}
-                productName={product.name}
-                description={product.description.summary}
-                href={`/products/${product.slug}`}
-                size="large"
-              />
-            ))
-          }
+        <div class="overflow-hidden w-full">
+          <div class="flex gap-4 animate-marquee w-max">
+            {
+              marqueeBreads?.map((product) => (
+                <div class="shrink-0">
+                  <ProductCard
+                    src={product.image}
+                    productName={product.name}
+                    description={product.description.summary}
+                    href={`/products/${product.slug}`}
+                    size="large"
+                  />
+                </div>
+              ))
+            }
+          </div>
         </div>
       </div>
     </section>
@@ -55,7 +60,7 @@ const allProducts = await products();
       </h2>
       <div class="grid grid-cols-2 md:grid-cols-4 gap-4 py-4">
         {
-          allProducts?.map((product) => (
+          bakersSpecials?.map((product) => (
             <ProductCard
               src={product.image}
               productName={product.name}
@@ -71,9 +76,13 @@ const allProducts = await products();
         class="bg-warm-beige p-6 rounded-lg shadow-sm max-w-3xl mx-auto flex flex-col gap-4 mb-4"
       >
         <div
-          class="h-20 w-20 md:h-32 md:w-32 lg:h-40 lg:w-40 rounded-full mx-auto overflow-hidden my-4"
+          class="h-20 w-20 md:h-32 md:w-32 lg:h-40 lg:w-40 lg:mt-6 rounded-full mx-auto overflow-hidden my-4"
         >
-          <img src="src/images/lucas_profile.jpg" alt="Luca" />
+          <img
+            src={lucasProfile.src}
+            alt="Luca"
+            class="w-full h-full object-cover"
+          />
         </div>
         <h2
           class="text-xl md:text-2xl lg:text-3xl font-bold text-earthy-brown text-center py-2"
