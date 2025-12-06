@@ -43,9 +43,22 @@ const imageClass = `${sizeClasses[size]} object-cover rounded-lg`;
     }
     {
       price && (
-        <small class="text-gray-700  font-medium md:text-base lg:text-base">
-          ${price}
-        </small>
+        <div class="flex justify-between items-center mt-2">
+          <small class="text-gray-700 font-medium md:text-base lg:text-base">
+            ${price}
+          </small>
+          <button
+            class="snipcart-add-item bg-warm-gold text-white px-3 py-1 rounded-lg text-sm hover:bg-warm-gold/90 transition-colors cursor-pointer"
+            data-item-id={productName}
+            data-item-price={price}
+            data-item-url={href}
+            data-item-description={description}
+            data-item-image={src}
+            data-item-name={productName}
+          >
+            Add
+          </button>
+        </div>
       )
     }
   </footer>
