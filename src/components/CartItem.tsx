@@ -1,16 +1,11 @@
-import { removeCartItem } from "../stores/cartStore";
+import type { CartItem as CartItemType } from "../stores/cartStore";
 
-interface CartItemProps {
-  item: {
-    id: string;
-    name: string;
-    price: number;
-    quantity: number;
-    image: string;
-  };
-}
+type Props = {
+  item: CartItemType;
+  removeCartItem: (id: string) => void;
+};
 
-export default function CartItem({ item }: CartItemProps) {
+export default function CartItem({ item, removeCartItem }: Props) {
   return (
     <article className="flex gap-4">
       <div className="w-24 h-24 rounded-lg overflow-hidden shrink-0 border border-stone-100">

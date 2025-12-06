@@ -1,5 +1,6 @@
 import { useStore } from "@nanostores/react";
 import { isCartOpen, cartItems, removeCartItem } from "../stores/cartStore";
+import CartItem from "./CartItem";
 
 export default function CartFlyout() {
   const $isCartOpen = useStore(isCartOpen);
@@ -73,36 +74,11 @@ export default function CartFlyout() {
           ) : (
             // Displaying cart items
             $cartItems.map((item) => (
-              <article key={item.id} className="flex gap-4">
-                <div className="w-24 h-24 rounded-lg overflow-hidden shrink-0 border border-stone-100">
-                  <img
-                    src={item.image}
-                    alt={item.name}
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-                <div className="flex-1 flex flex-col justify-between py-1">
-                  <div>
-                    <h3 className="font-bold text-stone-800 text-lg">
-                      {item.name}
-                    </h3>
-                    <p className="text-stone-500">
-                      ${item.price} x {item.quantity}
-                    </p>
-                  </div>
-                  <div className="flex justify-between items-center">
-                    <p className="font-medium text-earthy-brown">
-                      ${(item.price * item.quantity).toFixed(2)}
-                    </p>
-                    <button
-                      onClick={() => removeCartItem(item.id)}
-                      className="text-red-500 hover:text-red-700 text-sm font-medium hover:underline"
-                    >
-                      Remove
-                    </button>
-                  </div>
-                </div>
-              </article>
+              <CartItem
+                key={item.id}
+                item={item}
+                removeCartItem={removeCartItem}
+              />
             ))
           )}
         </section>
@@ -118,9 +94,11 @@ export default function CartFlyout() {
                 ${total.toFixed(2)}
               </span>
             </div>
-            <button className="w-full py-4 bg-warm-gold text-white rounded-xl font-bold text-lg hover:bg-warm-gold/90 transform hover:scale-[1.02] active:scale-[0.98] transition-all shadow-lg shadow-warm-gold/20">
-              Checkout
-            </button>
+            <a href="/checkout">
+              <button className="w-full py-4 bg-warm-gold text-white rounded-xl font-bold text-lg hover:bg-warm-gold/90 transform hover:scale-[1.02] active:scale-[0.98] transition-all shadow-lg shadow-warm-gold/20">
+                Checkout
+              </button>
+            </a>
             <p className="text-center text-xs text-stone-400 mt-4">
               Shipping and taxes calculated at checkout.
             </p>

@@ -1,0 +1,10 @@
+---
+import Layout from "../layouts/Layout.astro";
+import CheckoutForm from "../components/Checkout";
+---
+
+<Layout>
+  <div class="bg-stone-50 min-h-screen">
+    <CheckoutForm client:only="react" />
+  </div>
+</Layout>

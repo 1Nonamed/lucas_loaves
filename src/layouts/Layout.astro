@@ -19,11 +19,26 @@ import "../styles/global.css";
     <meta name="author" content="Lucas' Loaves" />
     <title>Luca's Loaves</title>
     <ClientRouter />
+    <link
+      rel="stylesheet"
+      href="https://cdn.snipcart.com/themes/v3.0.31/default/snipcart.css"
+    />
   </head>
   <body class="min-h-screen flex flex-col">
     <Header />
     <slot class="grow" />
     <Footer />
     <CartFlyout client:load />
+    <!-- <div
+      hidden
+      id="snipcart"
+      data-api-key="OTY0MTA4MWEtNzZjZS00YTZiLWE2YmQtZWQ2ZjE0OThhMTM1NjM4OTgwMDY3OTY3NTI2ODkw"
+      data-config-modal-style="side"
+    >
+    </div> -->
+    <script
+      async
+      src="https://cdn.snipcart.com/themes/v3.0.31/default/snipcart.js"
+    ></script>
   </body>
 </html>
