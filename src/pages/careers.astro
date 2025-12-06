@@ -1,9 +1,11 @@
 ---
-export const prerender = true;
 import SearchForm from "../components/SearchForm.astro";
 import Button from "../components/shared/Button.astro";
 import Layout from "../layouts/Layout.astro";
+import { getJobs } from "../actions/careers";
 import JobOpeningCard from "../components/JobOpeningCard.astro";
+
+const jobs = await getJobs();
 ---
 
 <Layout>
@@ -30,27 +32,18 @@ import JobOpeningCard from "../components/JobOpeningCard.astro";
         Current Openings
       </h2>
       <SearchForm />
-      <div class="flex flex-col md:flex-row gap-4">
-        <JobOpeningCard
-          title="Head Sourdough Baker"
-          location="Sydney, NSW"
-          type="Full-Time"
-          description="Lead our morning bake, perfecting our signature sourdough loaves and training new team members."
-        />
-        <JobOpeningCard
-          title="Assistant Baker"
-          location="Melbourne, VIC"
-          type="Part-Time"
-          description="Support our head baker in daily operations, ensuring quality and consistency in every loaf."
-          applyLink="/"
-        />
-        <JobOpeningCard
-          title="Customer Service Representative"
-          location="Brisbane, QLD"
-          type="Full-Time"
-          description="Be the friendly face of our bakery, assisting customers with their orders and inquiries."
-          applyLink="/"
-        />
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        {
+          jobs.map((job) => (
+            <JobOpeningCard
+              title={job.title}
+              location={job.location}
+              type={job.type}
+              description={job.description}
+              applyLink={`/careers/${job.slug}`}
+            />
+          ))
+        }
       </div>
     </section>
   </main>
