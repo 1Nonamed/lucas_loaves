@@ -10,10 +10,15 @@ const allProducts = await products();
 
 <Layout>
   <Header />
-  <main class="pt-16 flex flex-col grow">
-    <section class="py-6 px-4">
+  <main class="pt-16 flex flex-col grow md:pt-24 lg:pt-32">
+    <section class="py-6 px-4 md:max-w-6xl md:mx-auto">
+      <h1
+        class="text-4xl md:text-6xl font-bold max-w-4xl leading-tight text-earthy-brown hover:text-warm-gold transition ease-in-out pb-4"
+      >
+        Our Products
+      </h1>
       <SearchForm />
-      <div class="grid grid-cols-2 md:grid-cols-3 gap-4 py-4">
+      <div class="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-8 py-4">
         {
           allProducts?.map((product) => (
             <ProductCard
