@@ -3,7 +3,6 @@ import "@fontsource-variable/onest";
 import Header from "../components/shared/Header.astro";
 import Footer from "../components/shared/Footer.astro";
 
-import { ClientRouter } from "astro:transitions";
 import "../styles/global.css";
 ---
 
@@ -18,7 +17,6 @@ import "../styles/global.css";
     <meta name="keywords" content="sourdough, bread, baked goods, artisanal" />
     <meta name="author" content="Lucas' Loaves" />
     <title>Luca's Loaves</title>
-    <ClientRouter />
     <link
       rel="stylesheet"
       href="https://cdn.snipcart.com/themes/v3.0.31/default/snipcart.css"
@@ -33,12 +31,11 @@ import "../styles/global.css";
       id="snipcart"
       data-api-key={import.meta.env.PUBLIC_SNIPCART_API_KEY}
       data-config-modal-style="side"
-      transition:persist
     >
     </div>
     <script
       async
       src="https://cdn.snipcart.com/themes/v3.0.31/default/snipcart.js"
-      transition:persist></script>
+    ></script>
   </body>
 </html>

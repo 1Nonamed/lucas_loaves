@@ -1,7 +1,7 @@
 ---
 import Menu from "./Menu.astro";
 import MobileMenu from "./MobileMenu.astro";
-import CartIcon from "../CartIcon.tsx";
+import CartIcon from "../CartIcon.astro";
 ---
 
 <header
@@ -15,6 +15,6 @@ import CartIcon from "../CartIcon.tsx";
       </a>
       <Menu />
     </div>
-    <CartIcon client:load />
+    <CartIcon />
   </div>
 </header>
