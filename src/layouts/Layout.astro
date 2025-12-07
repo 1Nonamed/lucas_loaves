@@ -33,11 +33,12 @@ import "../styles/global.css";
       id="snipcart"
       data-api-key={import.meta.env.PUBLIC_SNIPCART_API_KEY}
       data-config-modal-style="side"
+      transition:persist
     >
     </div>
     <script
       async
       src="https://cdn.snipcart.com/themes/v3.0.31/default/snipcart.js"
-    ></script>
+      transition:persist></script>
   </body>
 </html>
